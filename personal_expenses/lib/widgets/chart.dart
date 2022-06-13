@@ -49,18 +49,16 @@ class Chart extends StatelessWidget {
     return Card(
       elevation: 6,
       margin: const EdgeInsets.all(20),
-      child: Padding( // if you have to use a container for padding only then it is better to define a padding widget instead of container widget
+      child: Padding(
+        // if you have to use a container for padding only then it is better to define a padding widget instead of container widget
         padding: const EdgeInsets.all(10),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceAround,
           children: groupedTransactionValues.map((data) {
             return Flexible(
               fit: FlexFit.tight,
-              child: ChartBar(
-               totalSpending == 0.0 ? 0.0 : 
-               data['day'], data['amount'], 
-               (data['amount'] as double) / totalSpending
-                ),
+              child: ChartBar(totalSpending == 0.0 ? 0.0 : data['day'],
+                  data['amount'], (data['amount'] as double) / totalSpending),
             );
           }).toList(),
         ),
